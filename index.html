@@ -1,93 +1,1132 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--meta tags-->
-    <meta name="description" content="Site para mostrar os projetos criados ao longo do curso de SI">
-    <meta name="author" content="Vicente Neto">
-    
-    <!--link styles-->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Vicente Neto | VN</title>
+    <title>Vicente Neto | Desenvolvedor & Estudante de SI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        dark: '#1e293b',
+                        accent: '#f43f5e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            .section-title {
+                @apply text-3xl font-bold text-dark mb-4;
+            }
+            .section-divider {
+                @apply w-20 h-1 bg-accent mx-auto mb-8;
+            }
+            .card-style {
+                @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+            }
+            .company-logo {
+                @apply w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center p-2;
+            }
+            .timeline-item {
+                @apply ml-8 pl-8 border-l-2 border-primary-200 relative;
+            }
+            .timeline-dot {
+                @apply absolute -left-[9px] top-2 w-3 h-3 rounded-full bg-primary-500;
+            }
+            .skill-tag {
+                @apply bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded;
+            }
+            .social-button {
+                @apply bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 transition-all;
+            }
+            .contact-button {
+                @apply inline-block bg-accent hover:bg-accent/90 text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all transform hover:scale-105;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="scripts/script-date.js"></script>
 </head>
-<body>
-    <header>
-        <div class="container-img">
-            <img class="img-logo" src="./images/logo2.png" alt="">
+
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Header/Hero Section -->
+    <header class="bg-gradient-to-br from-primary-800 to-primary-600 text-white py-20">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+
+                <!-- Texto e Botões -->
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Vicente Neto</h1>
+                    <h2 class="text-xl md:text-2xl font-medium mb-6 text-primary-200">
+                        Estudante de Sistemas de Informação · Desenvolvedor Web · CEO do Mundo dos Otakus
+                    </h2>
+
+                    <!-- Redes sociais -->
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start mb-6">
+                        <a href="https://linkedin.com/in/vicente-neto" target="_blank" class="social-button">
+                            <i class="fab fa-linkedin-in"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/VicenteNeto21" target="_blank" class="social-button">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="http://lattes.cnpq.br/6561102175684226" target="_blank" class="social-button">
+                            <i class="fas fa-id-card"></i> Lattes
+                        </a>
+                        <a href="https://mundodosotakus.com.br" target="_blank" class="social-button">
+                            <i class="fas fa-fire"></i> Mundo dos Otakus
+                        </a>
+                        <a href="https://linktr.ee/vicenteneto" target="_blank" class="social-button">
+                            <i class="fas fa-link"></i> Linktree
+                        </a>
+                    </div>
+
+                    <!-- Botão de contato -->
+                    <a href="mailto:vneto500@gmail.com" class="contact-button">
+                        <i class="fas fa-envelope mr-2"></i> Entre em Contato
+                    </a>
+                </div>
+
+                <!-- Foto -->
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div
+                            class="w-64 h-64 md:w-80 md:h-80 bg-primary-400 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
+                            <img src="img/capa.jpg" alt="Vicente Neto" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="absolute -bottom-5 -right-5 bg-white text-primary-600 px-4 py-2 rounded-full shadow-lg font-medium">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Crateús - CE
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <nav>
-            <a href="#skills" class="nav-links">Minhas Skills</a>
-            <a href="#quem-sou-eu" class="nav-links">Quem sou</a>
-            <a href="#meus-projetos" class="nav-links">Meus projetos</a>
-            <a href="#contato" class="nav-links">Contato</a>
-        </nav>
     </header>
 
-    <main>
-        <section class="first-section">
-            <div class="box-img-main">
-                <img class="img-profile" src="./images/perfil.jpg" alt="Vicente Neto - perfil">
-            </div>
-            <div>
-                <h1>Olá! Meu nome é <br> <strong>Vicente Neto</strong></h1>
-                <p>Tenho 23 anos, sou desenvolvedor, designer UX-UI e tenho experiência com gestão e sou <strong>Universitário.</strong></p>
-                <a href="#contato" class="btn-action link-action">Meus Contatos</a>
-            </div>
-        </section>
-        
-        <section id="skills" class="second-section">
-            <h2 class="title">Minhas Skills</h2>
-            <div>
-                <p><i class="fab fa-html5"></i> <span>HTML</span></p>
-                <p><i class="fab fa-css3"></i> <span>CSS</span></p>
-                <p><i class="fab fa-js"></i> <span>JavaScript</span></p>
-                <p><i class="fab fa-php"></i> <span>PHP</span></p>
-                <p><i class="fab fa-figma"></i> <span>FIGMA</span></p>
-                <p><i class="fas fa-database"></i> <span>MySQL</span></p>
-            </div>
-        </section>        
 
-        <section id="quem-sou-eu" class="third-section">
-            <h2 class="title">Quem sou eu ?</h2>
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Sobre Mim</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-primary-700 mb-4">Olá,
+                        eu sou o Vicente!</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Estudante de Sistemas de Informação na Universidade
+                        Federal do Ceará (UFC) e técnico em Informática.
+                        Atualmente atuo como monitor de Sistemas
+                        Operacionais e Redes de Computadores na UFC e sou
+                        CEO do site Mundo dos Otakus.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Minha paixão por tecnologia me levou a desenvolver
+                        habilidades em desenvolvimento web, design e gestão
+                        de projetos. Estou sempre buscando aprender novas
+                        tecnologias e enfrentar desafios que me permitam
+                        crescer profissionalmente.
+                    </p>
+
+                    <div class="bg-primary-50 border-l-4 border-primary-500 p-4 rounded-r">
+                        <p class="text-primary-800 font-medium">
+                            <i class="fas fa-quote-left text-primary-400 mr-2"></i>
+                            Transformo café em código e ideias em realidade
+                            digital.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2">
+                    <div class="card-style bg-gray-50">
+                        <h4 class="text-xl font-semibold mb-6 text-dark">Informações
+                            Pessoais</h4>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-500">Email</h5>
+                                    <p class="text-dark">vneto500@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-500">Formação</h5>
+                                    <p class="text-dark">Sistemas de
+                                        Informação - UFC</p>
+                                    <p class="text-sm text-gray-500">Técnico
+                                        em Informática</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-500">Experiência</h5>
+                                    <p class="text-dark">+3 anos como
+                                        desenvolvedor</p>
+                                    <p class="text-sm text-gray-500">CEO
+                                        Mundo dos Otakus</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-500">Habilidades</h5>
+                                    <p class="text-dark">Front-end, Design,
+                                        Gestão</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+
+            <!-- Título e descrição -->
+            <div class="text-center mb-12">
+                <h2 class="section-title">Minhas Habilidades</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Tecnologias e ferramentas que utilizo no meu dia a dia como desenvolvedor.
+                </p>
+            </div>
+
+            <!-- Tecnologias -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-16">
+                <!-- HTML -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-orange-50 rounded-full">
+                        <i class="fab fa-html5 text-4xl text-orange-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">HTML5</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-orange-500 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <!-- CSS -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-50 rounded-full">
+                        <i class="fab fa-css3-alt text-4xl text-blue-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">CSS3</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-blue-500 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-yellow-50 rounded-full">
+                        <i class="fab fa-js text-4xl text-yellow-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">JavaScript</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-yellow-500 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- PHP -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-purple-50 rounded-full">
+                        <i class="fab fa-php text-4xl text-purple-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">PHP</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-purple-700 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <!-- Figma -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-pink-50 rounded-full">
+                        <i class="fab fa-figma text-4xl text-pink-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Figma</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-pink-500 rounded-full" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <!-- MySQL -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-50 rounded-full">
+                        <i class="fas fa-database text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">MySQL</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-blue-600 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- Java -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-red-50 rounded-full">
+                        <i class="fab fa-java text-4xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Java</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-red-600 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <!-- C -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-green-50 rounded-full">
+                        <i class="fas fa-c text-4xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">C</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-green-600 rounded-full" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <!-- Laravel -->
+                <div class="card-style transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-red-50 rounded-full">
+                        <i class="fab fa-laravel text-4xl text-red-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Laravel</h3>
+                    <div class="mt-2 h-1 w-full bg-gray-200 rounded-full">
+                        <div class="h-1 bg-red-700 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks de Trabalho -->
+            <section class="py-12 bg-gray-50">
+                <div class="container mx-auto px-6 max-w-5xl">
+                    <div class="text-center mb-12">
+                        <h2 class="section-title">Frameworks de Trabalho</h2>
+                        <div class="w-24 h-1 mx-auto mt-4 rounded section-divider"></div>
+                        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Frameworks que utilizo no desenvolvimento web.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        <!-- Bootstrap -->
+                        <div class="card-style transform hover:-translate-y-2 text-center">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-purple-50 rounded-full">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png"
+                                    alt="Bootstrap" class="w-10 h-10 object-contain">
+                            </div>
+                            <h3 class="font-semibold text-gray-800">Bootstrap</h3>
+                        </div>
+
+                        <!-- Materialize-css -->
+                        <div class="card-style transform hover:-translate-y-2 text-center">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-teal-70 rounded-full">
+                                <img src="https://colinstodd.com/images/posts/matcss-min.png" alt="Materialize-css"
+                                    class="w-10 h-10 object-contain">
+                            </div>
+                            <h3 class="font-semibold text-gray-800">Materialize</h3>
+                        </div>
+
+                        <!-- Tailwind CSS -->
+                        <div class="card-style transform hover:-translate-y-2 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-sky-50 rounded-full">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png"
+                                    alt="Tailwind CSS" class="w-10 h-10 object-contain">
+                            </div>
+                            <h3 class="font-semibold text-gray-800">Tailwind</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-extrabold text-gray-900">Experiência Profissional</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Minha jornada profissional e acadêmica até o momento.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+                <!-- Universidade Federal do Ceará -->
+                <div class="card-style border-l-4 border-primary-500 bg-gray-50 rounded-lg shadow p-6">
+                    <div class="flex items-center gap-6 mb-6">
+                        <img src="https://ufc70anos.ufc.br/wp-content/uploads/2024/08/logo-296x300.png" alt="UFC Logo"
+                            class="w-16 h-16 object-contain rounded-md shadow" />
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Universidade Federal do Ceará (UFC)</h3>
+                            <p class="text-sm text-gray-500">Crateús, CE · Voluntário</p>
+                        </div>
+                    </div>
+
+                    <div id="ufc-experiences"
+                        class="space-y-6 max-h-[100%] overflow-hidden transition-all duration-500 ease-in-out">
+                        <!-- Experiências em andamento - Destaque com borda e texto primário -->
+                        <div class="relative bg-yellow-50 rounded-lg shadow p-6">
+                            <span
+                                class="absolute top-4 right-4 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded-full select-none">Em
+                                andamento</span>
+
+                            <h4 class="text-lg font-semibold text-yellow-800 mb-2">Voluntário - Monitor de Sistemas
+                                Operacionais e Redes</h4>
+                            <p class="text-sm text-yellow-700 mb-2 font-semibold" data-start="Abr 2025" data-end=""></p>
+                            <p class="text-gray-700 mb-3">Suporte aos alunos com conteúdo teórico e prático, atividades
+                                laboratoriais e plantões.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Redes</span>
+                                <span class="skill-tag">Linux</span>
+                                <span class="skill-tag">Ensino Superior</span>
+                            </div>
+                        </div>
+
+                        <div class="relative bg-yellow-50 rounded-lg shadow p-6 mb-6">
+                            <span
+                                class="absolute top-4 right-4 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded-full select-none">
+                                Em andamento
+                            </span>
+                            <h4 class="text-lg font-semibold text-yellow-800 mb-2">Representante de Curso de SI</h4>
+                            <p class="text-sm text-yellow-700 mb-2 font-semibold" data-start="Nov 2024" data-end=""></p>
+                            <p class="text-gray-700 mb-3">Represento os interesses dos alunos do curso junto à
+                                coordenação, participo de reuniões do colegiado e auxilio na comunicação entre
+                                estudantes e universidade.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Comunicação</span>
+                                <span class="skill-tag">Coordenação</span>
+                            </div>
+                        </div>
+
+                        <div class="relative bg-yellow-50 rounded-lg shadow p-6 mb-6">
+                            <span
+                                class="absolute top-4 right-4 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded-full select-none">
+                                Em andamento
+                            </span>
+                            <h4 class="text-lg font-semibold text-yellow-800 mb-2">Voluntário - GSIPP</h4>
+                            <p class="text-sm text-yellow-700 mb-2 font-semibold" data-start="Ago 2023" data-end=""></p>
+                            <p class="text-gray-700 mb-3">Voluntário no Grupo de Pesquisa em Segurança da Informação e
+                                Preservação da Privacidade (GSIPP).</p>
+                        </div>
+
+                        <div class="relative bg-yellow-50 rounded-lg shadow p-6 mb-6">
+                            <span
+                                class="absolute top-4 right-4 bg-yellow-400 text-yellow-900 text-xs font-semibold px-2 py-1 rounded-full select-none">
+                                Em andamento
+                            </span>
+                            <h4 class="text-lg font-semibold text-yellow-800 mb-2">Diretor de Assuntos Acadêmicos - CASI
+                            </h4>
+                            <p class="text-sm text-yellow-700 mb-2 font-semibold" data-start="Ago 2024" data-end=""></p>
+                            <p class="text-gray-700 mb-3">Auxílio ao Presidente do Centro Acadêmico na supervisão de
+                                atividades, organização de eventos e atendimento às demandas estudantis.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Gestão</span>
+                                <span class="skill-tag">Planejamento</span>
+                                <span class="skill-tag">Trabalho em equipe</span>
+                            </div>
+                        </div>
+
+
+                        <!-- Experiências encerradas - padrão normal -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-800">Monitor de Lógica de Programação e
+                                Algoritmos</h4>
+                            <p class="text-sm text-gray-500 mb-2">Ago de 2024 - Dez de 2024 · 5 meses</p>
+                            <p class="text-gray-700 mb-3">Auxílio nas práticas de programação, elaboração de listas,
+                                plantões e apoio pedagógico aos calouros.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Algoritmos</span>
+                                <span class="skill-tag">Ensino</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-800">Bolsista - Monitoria de Sistemas
+                                Operacionais e Redes de Computadores</h4>
+                            <p class="text-sm text-gray-500 mb-2">Mar de 2024 - Fev de 2025 · 1 ano</p>
+                            <p class="text-gray-700 mb-3">Competências: Sistemas operacionais · Linux · Docência · Rede
+                                de computadores</p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-800">Bolsista do Mapeamento do Ecossistema de
+                                Inovação Cearense</h4>
+                            <p class="text-sm text-gray-500 mb-2">Jul de 2023 - Jan de 2024 · 7 meses</p>
+                            <p class="text-gray-700 mb-3">Bolsista do projeto desenvolvido pela UFC, intitulado
+                                "Mapeamento do Ecossistema de Inovação Cearense". <br />Link do projeto no ar: <a
+                                    href="https://mapainovacao.ufc.br/" target="_blank"
+                                    class="text-primary-600 underline">mapainovacao.ufc.br</a></p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-800">Voluntário - GESID</h4>
+                            <p class="text-sm text-gray-500 mb-2">Jun de 2023 - Jul de 2023 · 2 meses</p>
+                            <p class="text-gray-700 mb-3">Voluntário no grupo de estudos intitulado "Articulação
+                                Extensionista do Grupo de Estudos em Sistemas de Informação e Inovação Digital (GESID)".
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Docência</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="toggle-ufc-experience"
+                        class="mt-6 px-5 py-2 bg-primary-500 text-white rounded hover:bg-primary-600 transition">
+                        Ver mais
+                    </button>
+                </div>
+
+                <!-- Grupo ITA -->
+                <div class="card-style border-l-4 border-primary-500 bg-gray-50 rounded-lg shadow p-6">
+                    <div class="flex items-center gap-6 mb-6">
+                        <img src="img/experiencias/grupo-ita.png" alt="Grupo ITA Logo"
+                            class="w-16 h-16 object-contain rounded-md shadow" />
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Grupo ITA</h3>
+                            <p class="text-sm text-gray-500">Crateús, CE · Freelancer</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Técnico de Suporte em TI</h4>
+                        <p class="text-sm text-gray-500 mb-2">Ago de 2024 - o momento · 1 ano</p>
+                        <p class="text-gray-700 mb-3">Suporte técnico em hardware, redes, instalação de sistemas,
+                            manutenção preventiva e corretiva de equipamentos.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Infraestrutura</span>
+                            <span class="skill-tag">Manutenção</span>
+                            <span class="skill-tag">Atendimento</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mundo dos Otakus -->
+                <div class="card-style border-l-4 border-primary-500 bg-gray-50 rounded-lg shadow p-6">
+                    <div class="flex items-center gap-6 mb-6">
+                        <img src="https://pbs.twimg.com/profile_images/1616021975129853952/TEDFNiQX_200x200.jpg"
+                            alt="Prefeitura Tamboril Logo" class="w-16 h-16 object-contain rounded-md shadow" />
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Mundo dos Otakus</h3>
+                            <p class="text-sm text-gray-500">Crateús, CE</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Redator</h4>
+                        <p class="text-sm text-gray-500 mb-2" data-start="Set 2018" data-end=""></p>
+                        <p class="text-gray-700 mb-3">Criador e Redator voluntário do site Mundo dos Otakus, onde
+                            contribuí com a produção de conteúdos diversificados, incluindo tecnologia, animes, séries,
+                            filmes, curiosidades e entretenimento.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Redator</span>
+                            <span class="skill-tag">Editor</span>
+                            <span class="skill-tag">Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dama -->
+                <div class="card-style border-l-4 border-primary-500 bg-gray-50 rounded-lg shadow p-6">
+                    <div class="flex items-center gap-6 mb-6">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E0BAQFapml3KsDEbg/company-logo_100_100/B4EZcZKPTvHcAU-/0/1748473804476?e=1756339200&v=beta&t=VZD4Kh2wF1P9f8EfOp7NAtOHm2bL4mBqC4gPRmgViGQ"
+                            alt="Prefeitura Tamboril Logo" class="w-16 h-16 object-contain rounded-md shadow" />
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">DAMA – Digitalização e Articulação para o
+                                Mercado Agrícola</h3>
+                            <p class="text-sm text-gray-500">Crateús, CE · Terceirizado</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Desenvolvedor de front-end</h4>
+                        <p class="text-sm text-gray-500 mb-2" data-start="Mai 2024" data-end=""></p>
+                        <p class="text-gray-700 mb-3">Desenvolvedor front-end</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">ReactJS</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grafica Damasceno -->
+                <div class="card-style border-l-4 border-primary-500 bg-gray-50 rounded-lg shadow p-6">
+                    <div class="flex items-center gap-6 mb-6">
+                        <img src="https://www.graphicas.com.br/imgempresas/grafica-damasceno-catunda-ce-10255-FIEV.jpg"
+                            alt="Grafica Damasceno" class="w-16 h-16 object-contain rounded-md shadow" />
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Grafica Damasceno</h3>
+                            <p class="text-sm text-gray-500">Catunda, CE · Estágio</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Design Gráfico</h4>
+                        <p class="text-sm text-gray-500 mb-2">Fev de 2019 - Jun de 2020 · 1 ano 5 meses</p>
+                        <p class="text-gray-700 mb-3">Durante meu tempo na empresa, tive a oportunidade de desempenhar
+                            várias funções, incluindo design, gerenciamento de funcionários, gestão financeira, controle
+                            de estoque e gerenciamento de operações gerais. Foi uma experiência desafiadora que me
+                            permitiu desenvolver minhas habilidades em várias áreas e contribuir para o sucesso da
+                            empresa.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">CorelDraw</span>
+                            <span class="skill-tag">Design</span>
+                            <span class="skill-tag">Criação de Artes</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Prefeitura Tamboril -->
+                <div class="card-style border-l-4 border-primary-500 bg-gray-50 rounded-lg shadow p-6">
+                    <div class="flex items-center gap-6 mb-6">
+                        <img src="https://www.tamboril.ce.gov.br/imagens/logo.png" alt="Prefeitura Tamboril Logo"
+                            class="w-16 h-16 object-contain rounded-md shadow" />
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Prefeitura Municipal de Tamboril</h3>
+                            <p class="text-sm text-gray-500">Tamboril, CE · Estágio</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800">Estagiário em TI</h4>
+                        <p class="text-sm text-gray-500 mb-2">Ago de 2018 - Dez de 2018 · 5 meses</p>
+                        <p class="text-gray-700 mb-3">Manutenção de computadores, instalação de software, redes básicas
+                            e suporte técnico em escolas e órgãos públicos.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Suporte</span>
+                            <span class="skill-tag">HTML/PHP</span>
+                            <span class="skill-tag">Redes Locais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Certificações</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Cursos e
+                    certificados que obtive ao longo da minha carreira.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Certificação 1 -->
+                <div class="card-style border-l-4 border-primary-500 pl-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <img src="logo-rocketseat.png" alt="Logo Rocketseat" class="h-8 mb-4">
+                            <h3 class="text-xl font-bold text-dark mb-1">Curso
+                                Online de PHP</h3>
+                            <p class="text-gray-600 mb-2">Rocketseat •
+                                Emitido em out de 2024</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <a href="link-da-credencial" target="_blank"
+                                class="inline-block bg-primary-100 text-primary-800 font-medium px-4 py-2 rounded-lg hover:bg-primary-200 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Ver credencial
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-500">Código da
+                            credencial: <code
+                                class="bg-gray-100 px-2 py-1 rounded">8990efca-d479-43e2-8189-ec3b3a505c52</code></p>
+                    </div>
+                </div>
+
+                <!-- Certificação 2 -->
+                <div class="card-style border-l-4 border-primary-500 pl-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <img src="logo-sebrae.png" alt="Logo Sebrae" class="h-8 mb-4">
+                            <h3 class="text-xl font-bold text-dark mb-1">Whatsapp
+                                Business e Perfil da Empresa no Google</h3>
+                            <p class="text-gray-600 mb-2">Sebrae • Emitido
+                                em set de 2024</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <a href="66f6fb60cc1d7825f23d4b7a.pdf" target="_blank"
+                                class="inline-block bg-primary-100 text-primary-800 font-medium px-4 py-2 rounded-lg hover:bg-primary-200 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Ver credencial
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-500">Código da
+                            credencial: <code class="bg-gray-100 px-2 py-1 rounded">66f6fb60cc1d7825f23d4b7a</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Publications Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Produções Acadêmicas</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Artigos e
+                    apresentações realizados em eventos científicos e
+                    acadêmicos.</p>
+            </div>
+
+            <!-- Produção Bibliográfica -->
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-primary-700 mb-4">Produção Bibliográfica</h3>
+                <div class="card-style border-l-4 border-primary-500 pl-6">
+                    <p class="text-gray-700 mb-3">
+                        <strong>ARAUJO, A. A. P.; SILVA, J. S.; VICENTE DUARTE; PONTES, T. B.; KALINOWSKI, M.</strong>
+                        Caminhos do Interior: Connecting Information Systems, Tourism, and Regional Development in
+                        Brazil's Inland.
+                        In: <em>XX Simpósio Brasileiro de Sistemas de Informação</em>, 2024, Juiz de Fora.
+                        <strong>ANAIS ESTENDIDOS DO XX SBSI</strong>, 2024.
+                    </p>
+                    <a href="https://sol.sbc.org.br/index.php/sbsi_estendido/article/view/28616" target="_blank"
+                        class="inline-block bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition">
+                        Ver Artigo
+                    </a>
+                </div>
+            </div>
+            <!-- Apresentações de Trabalho -->
             <div>
-                <img class="img-who-am-i" src="./images/vicente01.jpg" alt="Vicente Neto - Img">
-                <p>Meu nome é <strong>Vicente Neto</strong>. Atualmente, estou cursando <strong>Sistemas de Informação</strong> na Universidade Federal do Ceará - UFC, onde também atuo como bolsista PID, desempenhando o papel de monitor em <strong>Sistemas Operacionais</strong>. Além da minha dedicação acadêmica, tenho uma base em programação e experiência na área de gestão.</p>
-            </div>
-        </section>
+                <h3 class="text-xl font-bold text-primary-700 mb-4">Apresentações
+                    de Trabalho</h3>
 
-        <section id="meus-projetos" class="fourth-section">
-            <h2 class="title">Meus projetos criados</h2>
-            <p id="loading">Carregando...</p>
-            <div id="project-list" class="card-container">
-                
-            </div>
-        </section>
-    </main>
+                <div class="space-y-6">
+                    <!-- Apresentação 1 -->
+                    <div class="card-style border-l-4 border-primary-500 pl-6">
+                        <p class="text-gray-700">
+                            <strong>VICENTE DUARTE; Emerson B. Tomaz; DA
+                                SILVA, JOSÉ WELLINGTON FRANCO.</strong>
+                            Uso De Gamificação Na Disciplina De Sistemas
+                            Operacionais.
+                            <em>Apresentação de Trabalho/Congresso</em>,
+                            2024.
+                        </p>
+                    </div>
 
-    <footer id="contato">
-        <h2 class="title">Contato</h2>
-        <div>
-            <a href="https://www.instagram.com/vicente1374/" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" class="bi bi-instagram" viewBox="0 0 16 16">
-                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/vicente-neto/" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" class="bi bi-linkedin" viewBox="0 0 16 16">
-                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                </svg>
-            </a>
-            <a href="https://github.com/VicenteNeto21" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fff" class="bi bi-github" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-            </a>
+                    <!-- Apresentação 2 -->
+                    <div class="card-style border-l-4 border-primary-500 pl-6">
+                        <p class="text-gray-700">
+                            <strong>VICENTE DUARTE; ARAUJO, A. A. P.;
+                                Emerson B. Tomaz; PEREIRA, L. T.; CHAGAS,
+                                FRANCISCO DAS.</strong>
+                            Mapa do Ecossistema de Inovação Cearense:
+                            Fortalecendo a difusão de startups do Ceará
+                            através de um painel de startups.
+                            <em>Apresentação de Trabalho/Congresso</em>,
+                            2023.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Meus Projetos</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Alguns dos
+                    meus projetos públicos no GitHub.</p>
+            </div>
+
+            <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="loading" class="col-span-full text-center py-8">
+                    <div
+                        class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-500 mb-4">
+                    </div>
+                    <p>Carregando projetos...</p>
+                </div>
+                <!-- Projetos serão carregados via API do GitHub -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Formação Acadêmica</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Graduação -->
+                <div class="card-style border-l-4 border-primary-500">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-primary-100 p-3 rounded-lg text-primary-600 mr-4">
+                            <i class="fas fa-university text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-dark mb-1">Bacharelado em Sistemas de Informação</h3>
+                            <p class="text-gray-600 mb-1">Universidade Federal do Ceará (UFC), Brasil</p>
+                            <p class="text-gray-500 text-sm mb-2">Início: 2021 · Em andamento</p>
+                            <span
+                                class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-2.5 py-0.5 rounded">
+                                Em andamento
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        Formação focada em desenvolvimento de sistemas, gestão de TI e inovação tecnológica.
+                    </p>
+                </div>
+
+                <!-- Ensino Médio Técnico -->
+                <div class="card-style border-l-4 border-primary-500">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-primary-100 p-3 rounded-lg text-primary-600 mr-4">
+                            <i class="fas fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-dark mb-1">Técnico em Informática</h3>
+                            <p class="text-gray-600 mb-1">EEEP Antônio Mota Filho (AMF), Brasil</p>
+                            <p class="text-gray-500 text-sm mb-2">2016 – 2018</p>
+                            <span
+                                class="inline-block bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded">
+                                Concluído
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        Formação técnica com foco em desenvolvimento de software, hardware e redes de computadores.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educação e Popularização de C&T -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Educação e Popularização de C&amp;T</h2>
+                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+            </div>
+
+            <!-- Seção: Cursos de Curta Duração -->
+            <h3 class="text-2xl font-semibold text-primary-700 mb-6">Cursos de curta duração ministrados</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Curso 1 -->
+                <div class="card-style border-l-4 border-primary-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-100 p-3 rounded-lg text-primary-600 mr-4">
+                            <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-dark">Minicurso de Marketing Digital</h4>
+                            <p class="text-sm text-gray-600">VICENTE DUARTE, SILVA, J. S., SOUZA, F. E. P. — 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Curso introdutório abordando estratégias de marketing digital para
+                        iniciantes.</p>
+                </div>
+
+                <!-- Curso 2 -->
+                <div class="card-style border-l-4 border-primary-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-100 p-3 rounded-lg text-primary-600 mr-4">
+                            <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-dark">Wireshark e Segurança na Internet</h4>
+                            <p class="text-sm text-gray-600">AGUIAR JUNIOR, J. C., VICENTE DUARTE — 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Workshop prático sobre análise de pacotes e segurança em redes.</p>
+                </div>
+
+                <!-- Curso 3 -->
+                <div class="card-style border-l-4 border-primary-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-100 p-3 rounded-lg text-primary-600 mr-4">
+                            <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-dark">Esteganografia em Imagens e Áudio</h4>
+                            <p class="text-sm text-gray-600">ANDRADE, F. M. R., VICENTE DUARTE — 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Exploração de técnicas para ocultar mensagens em mídias digitais.</p>
+                </div>
+
+                <!-- Curso 4 -->
+                <div class="card-style border-l-4 border-primary-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-100 p-3 rounded-lg text-primary-600 mr-4">
+                            <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-dark">IA e Segurança da Informação</h4>
+                            <p class="text-sm text-gray-600">VICENTE DUARTE, ANDRADE, F. M. R. — 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Discussão sobre o impacto da IA na segurança e privacidade no cotidiano.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Seção: Organização de Eventos -->
+            <h3 class="text-2xl font-semibold text-yellow-600 mb-6">Organização de eventos, congressos, exposições e
+                feiras</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Evento 1 -->
+                <div class="card-style border-l-4 border-yellow-500">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-lg text-yellow-600 mr-4">
+                            <i class="fas fa-calendar-alt text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-dark">FIT 2025 - A era do IoT</h4>
+                            <p class="text-sm text-gray-600">VICENTE DUARTE, SILVA, B. R. S. — 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">Organização de congresso com foco em Internet das Coisas e tecnologias
+                        emergentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Vicente Neto</h3>
+                    <p class="text-gray-400">Desenvolvedor & Estudante de
+                        Sistemas de Informação</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/vicente-neto" target="_blank"
+                        class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/VicenteNeto21" target="_blank"
+                        class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://mundodosotakus.com.br" target="_blank"
+                        class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="mailto:vneto500@gmail.com"
+                        class="text-gray-400 hover:text-white text-xl transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Vicente Neto. Todos os direitos reservados.</p>
+                <p class="mt-2">Catunda - CE, Brasil</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Sua API para mostrar os projetos do GitHub
+        function getProjects() {
+            const urlGitHub = 'https://api.github.com/users/VicenteNeto21/repos'
+            var loadingElement = document.getElementById('loading')
+
+            fetch(urlGitHub, {
+                method: 'GET',
+            })
+                .then((response) => response.json())
+                .then((response) => {
+                    console.log(response)
+                    showProjects(response)
+                    loadingElement.style.display = 'none'
+                })
+                .catch((e) => {
+                    console.log(`Error -> ${e}`)
+                    loadingElement.textContent = "Não foi possível carregar os projetos no momento."
+                })
+        }
+
+        function showProjects(data) {
+            var listElement = document.getElementById('project-list');
+
+            // Ordena por data de atualização (mais recentes primeiro)
+            data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+            for (let i = 0; i < data.length; i++) {
+                // Pula forks para mostrar apenas projetos originais
+                if (data[i].fork) continue;
+
+                let card = document.createElement("div");
+                card.classList.add("card-style", "transform", "hover:-translate-y-2");
+
+                let projectLink = document.createElement("a");
+                projectLink.href = data[i]['html_url'];
+                projectLink.target = '_blank';
+                projectLink.classList.add("block");
+
+                let projectName = document.createElement("h3");
+                projectName.textContent = data[i]['name'];
+                projectName.classList.add("text-xl", "font-bold", "text-dark", "mb-2", "hover:text-primary-600", "transition-colors");
+                projectLink.appendChild(projectName);
+
+                let projectDescription = document.createElement("p");
+                projectDescription.textContent = data[i]['description'] || "Sem descrição disponível";
+                projectDescription.classList.add("text-gray-600", "mb-4");
+
+                // Linguagem do projeto
+                let projectLanguage = document.createElement("div");
+                projectLanguage.classList.add("flex", "items-center", "text-sm", "text-gray-500", "mb-4");
+
+                if (data[i]['language']) {
+                    let languageColor = document.createElement("span");
+                    languageColor.classList.add("w-3", "h-3", "rounded-full", "mr-2");
+
+                    // Cores baseadas na linguagem (simplificado)
+                    switch (data[i]['language']) {
+                        case 'HTML': languageColor.classList.add("bg-orange-500"); break;
+                        case 'CSS': languageColor.classList.add("bg-blue-500"); break;
+                        case 'JavaScript': languageColor.classList.add("bg-yellow-400"); break;
+                        case 'PHP': languageColor.classList.add("bg-purple-700"); break;
+                        default: languageColor.classList.add("bg-gray-500");
+                    }
+
+                    projectLanguage.appendChild(languageColor);
+                    projectLanguage.innerHTML += data[i]['language'];
+                }
+
+                // Data de atualização
+                let updatedAt = new Date(data[i]['updated_at']);
+                let updateInfo = document.createElement("div");
+                updateInfo.classList.add("text-xs", "text-gray-400");
+                updateInfo.textContent = `Atualizado em ${updatedAt.toLocaleDateString()}`;
+
+                projectLink.appendChild(projectName);
+                card.appendChild(projectLink);
+                card.appendChild(projectDescription);
+                if (data[i]['language']) card.appendChild(projectLanguage);
+                card.appendChild(updateInfo);
+
+                listElement.appendChild(card);
+            }
+        }
+
+        // Carrega os projetos quando a página é carregada
+        document.addEventListener('DOMContentLoaded', getProjects);
+
+
+        const toggleBtn = document.getElementById('toggle-ufc-experience');
+        const experiences = document.getElementById('ufc-experiences');
+        let expanded = false;
+
+        // Aqui escondemos todas as experiências além das 3 primeiras em modo "fechado"
+        const allExperiences = Array.from(experiences.children);
+        const visibleCount = 4;
+
+        function updateDisplay() {
+            allExperiences.forEach((exp, idx) => {
+                if (!expanded && idx >= visibleCount) {
+                    exp.style.display = 'none';
+                } else {
+                    exp.style.display = 'block';
+                }
+            });
+            toggleBtn.textContent = expanded ? 'Ver menos' : 'Ver mais';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            updateDisplay();
+
+            if (!expanded) {
+                experiences.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Inicializa com 3 experiências visíveis
+        updateDisplay();
+    </script>
 </body>
-<script src="./js/main.js"></script>
+
 </html>

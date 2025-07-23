@@ -84,6 +84,31 @@
             }
         }
     </style>
+
+<style>
+  /* Estilo base para dropdown */
+  .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    left: 0;
+    margin-top: 0.5rem;
+    width: 12rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 50;
+  }
+
+  /* Quando aberto */
+  .dropdown-menu.open {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -91,8 +116,102 @@
 </head>
 
 <body class="bg-gray-50 font-sans text-gray-800">
+
+<nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-bold text-primary-700">Vicente Neto</a>
+
+      <!-- Menu desktop -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="#sobre" class="text-gray-700 hover:text-primary-700 font-semibold">Sobre Mim</a>
+        <a href="#skills" class="text-gray-700 hover:text-primary-700 font-semibold">Habilidades</a>
+        <a href="#experiencia" class="text-gray-700 hover:text-primary-700 font-semibold">Experiência</a>
+        <a href="#formacao" class="text-gray-700 hover:text-primary-700 font-semibold">Formação Acadêmica</a>
+        <a href="#ensino-e-pesquisa" class="text-gray-700 hover:text-primary-700 font-semibold">Educação e Pesquisa</a>
+        <!-- ... outros links ... -->
+
+        <!-- Dropdown -->
+        <div class="relative" id="dropdown-container">
+          <button
+            id="dropdown-button"
+            class="text-gray-700 hover:text-primary-700 font-semibold flex items-center gap-1 focus:outline-none"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Demais atividades
+            <svg class="w-4 h-4 text-primary-700" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+
+          <div
+            id="dropdown-menu"
+            class="dropdown-menu"
+            role="menu"
+            aria-label="submenu"
+          >
+            <a href="#certificados" class="block px-4 py-2 text-gray-700 hover:bg-primary-100 hover:text-primary-700" role="menuitem">Certificações</a>
+            <a href="#artigos" class="block px-4 py-2 text-gray-700 hover:bg-primary-100 hover:text-primary-700" role="menuitem">Produções Acadêmicas</a>
+            <a href="#projetos" class="block px-4 py-2 text-gray-700 hover:bg-primary-100 hover:text-primary-700" role="menuitem">Projetos</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão hamburger mobile -->
+      <div class="md:hidden">
+        <button id="btn-mobile-menu" class="focus:outline-none" aria-label="Abrir menu mobile">
+          <svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md px-6 pt-4 pb-6 space-y-2">
+    <a href="#sobre" class="block py-2 text-gray-700 hover:text-primary-700 font-semibold">Sobre Mim</a>
+    <a href="#experiencia" class="block py-2 text-gray-700 hover:text-primary-700 font-semibold">Experiência</a>
+    <a href="#eventos" class="block py-2 text-gray-700 hover:text-primary-700 font-semibold">Eventos</a>
+    <a href="#contato" class="block py-2 text-gray-700 hover:text-primary-700 font-semibold">Contato</a>
+  </div>
+
+<script>
+    // mesmo JS, mas aumentando um pouco o delay para suavidade
+    const dropdownContainer = document.getElementById('dropdown-container');
+    const dropdownButton = document.getElementById('dropdown-button');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    let closeTimeout;
+
+    function openDropdown() {
+      clearTimeout(closeTimeout);
+      dropdownMenu.classList.add('open');
+      dropdownButton.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+      closeTimeout = setTimeout(() => {
+        dropdownMenu.classList.remove('open');
+        dropdownButton.setAttribute('aria-expanded', 'false');
+      }, 400); // 400ms delay para mais suavidade
+    }
+
+    dropdownButton.addEventListener('mouseenter', openDropdown);
+    dropdownMenu.addEventListener('mouseenter', openDropdown);
+
+    dropdownButton.addEventListener('mouseleave', closeDropdown);
+    dropdownMenu.addEventListener('mouseleave', closeDropdown);
+  </script>
+</nav>
+
+
+
     <!-- Header/Hero Section -->
-    <header class="bg-gradient-to-br from-primary-800 to-primary-600 text-white py-20">
+    <header class="bg-gradient-to-br from-primary-800 to-primary-600 text-white py-20 mt-16">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
 
@@ -147,101 +266,118 @@
 
 
     <!-- About Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-12">
-                <h2 class="section-title">Sobre Mim</h2>
-                <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
-            </div>
+<section id="sobre" class="py-20 bg-white">
+  <div class="container mx-auto px-6 max-w-5xl">
+    <div class="text-center mb-12">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="w-24 h-1 mx-auto mt-4 rounded section-divider rounded"></div>
+    </div>
 
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="md:w-1/2">
-                    <h3 class="text-2xl font-semibold text-primary-700 mb-4">Olá,
-                        eu sou o Vicente!</h3>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Estudante de Sistemas de Informação na Universidade
-                        Federal do Ceará (UFC) e técnico em Informática.
-                        Atualmente atuo como monitor de Sistemas
-                        Operacionais e Redes de Computadores na UFC e sou
-                        CEO do site Mundo dos Otakus.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-6">
-                        Minha paixão por tecnologia me levou a desenvolver
-                        habilidades em desenvolvimento web, design e gestão
-                        de projetos. Estou sempre buscando aprender novas
-                        tecnologias e enfrentar desafios que me permitam
-                        crescer profissionalmente.
-                    </p>
+    <div class="flex flex-col md:flex-row gap-12 items-center">
+      <div class="md:w-1/2">
+        <h3 class="text-2xl font-semibold text-primary-700 mb-4">Olá,
+          eu sou o Vicente!</h3>
+        <p class="text-lg text-gray-600 mb-6">
+          Estudante de Sistemas de Informação na Universidade
+          Federal do Ceará (UFC) e técnico em Informática.
+          Atualmente atuo como monitor de Sistemas
+          Operacionais e Redes de Computadores na UFC e sou
+          CEO do site Mundo dos Otakus.
+        </p>
+        <p class="text-lg text-gray-600 mb-6">
+          Minha paixão por tecnologia me levou a desenvolver
+          habilidades em desenvolvimento web, design e gestão
+          de projetos. Estou sempre buscando aprender novas
+          tecnologias e enfrentar desafios que me permitam
+          crescer profissionalmente.
+        </p>
 
-                    <div class="bg-primary-50 border-l-4 border-primary-500 p-4 rounded-r">
-                        <p class="text-primary-800 font-medium">
-                            <i class="fas fa-quote-left text-primary-400 mr-2"></i>
-                            Transformo café em código e ideias em realidade
-                            digital.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="md:w-1/2">
-                    <div class="card-style bg-gray-50">
-                        <h4 class="text-xl font-semibold mb-6 text-dark">Informações
-                            Pessoais</h4>
-
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h5 class="font-medium text-gray-500">Email</h5>
-                                    <p class="text-dark">vneto500@gmail.com</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div>
-                                    <h5 class="font-medium text-gray-500">Formação</h5>
-                                    <p class="text-dark">Sistemas de
-                                        Informação - UFC</p>
-                                    <p class="text-sm text-gray-500">Técnico
-                                        em Informática</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
-                                    <i class="fas fa-briefcase"></i>
-                                </div>
-                                <div>
-                                    <h5 class="font-medium text-gray-500">Experiência</h5>
-                                    <p class="text-dark">+3 anos como
-                                        desenvolvedor</p>
-                                    <p class="text-sm text-gray-500">CEO
-                                        Mundo dos Otakus</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div>
-                                    <h5 class="font-medium text-gray-500">Habilidades</h5>
-                                    <p class="text-dark">Front-end, Design,
-                                        Gestão</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="bg-primary-50 border-l-4 border-primary-500 p-4 rounded-r">
+          <p class="text-primary-800 font-medium">
+            <i class="fas fa-quote-left text-primary-400 mr-2"></i>
+            Transformo café em código e ideias em realidade
+            digital.
+          </p>
         </div>
-    </section>
+      </div>
+
+      <div class="md:w-1/2">
+        <div class="card-style bg-gray-50">
+          <h4 class="text-xl font-semibold mb-6 text-dark">Informações
+            Pessoais</h4>
+
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-500">Email</h5>
+                <p class="text-dark">vneto500@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-500">Formação</h5>
+                <p class="text-dark">Sistemas de
+                  Informação - UFC</p>
+                <p class="text-sm text-gray-500">Técnico
+                  em Informática</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-500">Experiência</h5>
+                <p class="text-dark">+3 anos como
+                  desenvolvedor</p>
+                <p class="text-sm text-gray-500">CEO
+                  Mundo dos Otakus</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                <i class="fas fa-code"></i>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-500">Habilidades</h5>
+                <p class="text-dark">Front-end, Design,
+                  Gestão</p>
+              </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="flex items-start">
+              <div class="bg-primary-100 p-2 rounded-lg text-primary-600 mr-4">
+                <i class="fas fa-language"></i>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-500">Idiomas</h5>
+                <p class="text-dark">
+                  <strong>Inglês:</strong> Compreende Pouco, Fala Pouco, Lê Pouco, Escreve Pouco.<br>
+                  <strong>Espanhol:</strong> Compreende Razoavelmente, Fala Pouco, Lê Razoavelmente, Escreve Pouco.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
     <!-- Skills Section -->
-    <section class="py-20 bg-gray-50">
+    <section id="skills" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-5xl">
 
             <!-- Título e descrição -->
@@ -401,9 +537,8 @@
         </div>
     </section>
 
-
     <!-- Experience Section -->
-    <section class="py-20 bg-white">
+    <section id="experiencia" class="py-20 bg-white">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-16">
                 <h2 class="section-title text-3xl font-extrabold text-gray-900">Experiência Profissional</h2>
@@ -675,7 +810,7 @@
 
 
     <!-- Certifications Section -->
-    <section class="py-20 bg-gray-50">
+    <section id="certificados" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-12">
                 <h2 class="section-title">Certificações</h2>
@@ -738,7 +873,7 @@
     </section>
 
     <!-- Academic Publications Section -->
-    <section class="py-20 bg-white">
+    <section id="artigos" class="py-20 bg-white">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-12">
                 <h2 class="section-title">Produções Acadêmicas</h2>
@@ -761,7 +896,7 @@
                     </p>
                     <a href="https://sol.sbc.org.br/index.php/sbsi_estendido/article/view/28616" target="_blank"
                         class="inline-block bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition">
-                        Ver Artigo
+                        Ler Artigo
                     </a>
                 </div>
             </div>
@@ -802,7 +937,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="py-20 bg-gray-50">
+    <section id="projetos" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-12">
                 <h2 class="section-title">Meus Projetos</h2>
@@ -824,7 +959,7 @@
     </section>
 
     <!-- Education Section -->
-    <section class="py-20 bg-white">
+    <section id="formacao" class="py-20 bg-white">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-12">
                 <h2 class="section-title">Formação Acadêmica</h2>
@@ -878,7 +1013,7 @@
     </section>
 
     <!-- Educação e Popularização de C&T -->
-    <section class="py-20 bg-gray-50">
+    <section id="ensino-e-pesquisa" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="text-center mb-12">
                 <h2 class="section-title">Educação e Popularização de C&amp;T</h2>
@@ -948,24 +1083,51 @@
             </div>
 
             <!-- Seção: Organização de Eventos -->
-            <h3 class="text-2xl font-semibold text-yellow-600 mb-6">Organização de eventos, congressos, exposições e
-                feiras</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Evento 1 -->
-                <div class="card-style border-l-4 border-yellow-500">
-                    <div class="flex items-start mb-4">
-                        <div class="bg-yellow-100 p-3 rounded-lg text-yellow-600 mr-4">
-                            <i class="fas fa-calendar-alt text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-dark">FIT 2025 - A era do IoT</h4>
-                            <p class="text-sm text-gray-600">VICENTE DUARTE, SILVA, B. R. S. — 2025</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700">Organização de congresso com foco em Internet das Coisas e tecnologias
-                        emergentes.</p>
-                </div>
+            <h3 class="text-2xl font-semibold text-yellow-600 mb-6">Organização de eventos, congressos, exposições e feiras</h3>
+<div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+    <!-- Evento 1: FIT 2025 - A era do IoT -->
+    <div class="card-style border-l-4 border-yellow-500">
+        <div class="flex items-start mb-4">
+            <div class="bg-yellow-100 p-3 rounded-lg text-yellow-600 mr-4">
+                <i class="fas fa-calendar-alt text-2xl"></i>
             </div>
+            <div>
+                <h4 class="text-lg font-bold text-dark">FIT 2025 - A era do IoT</h4>
+                <p class="text-sm text-gray-600">VICENTE DUARTE, SILVA, B. R. S. — 2025</p>
+            </div>
+        </div>
+        <p class="text-gray-700">Organização de congresso com foco em Internet das Coisas e tecnologias emergentes.</p>
+    </div>
+
+    <!-- Evento 2: FIT 2024 - Segurança em Redes -->
+    <div class="card-style border-l-4 border-yellow-500">
+        <div class="flex items-start mb-4">
+            <div class="bg-yellow-100 p-3 rounded-lg text-yellow-600 mr-4">
+                <i class="fas fa-calendar-alt text-2xl"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-dark">FIT - Segurança em Redes em um Mundo Conectado</h4>
+                <p class="text-sm text-gray-600">EMERSON B. TOMAZ, VICENTE DUARTE, AGUIAR JUNIOR, J. C. — 2024</p>
+            </div>
+        </div>
+        <p class="text-gray-700">Congresso com foco em segurança da informação e redes conectadas em ambientes modernos.</p>
+    </div>
+
+    <!-- Evento 3: FIT 2023 - Sertão e Inovação -->
+    <div class="card-style border-l-4 border-yellow-500">
+        <div class="flex items-start mb-4">
+            <div class="bg-yellow-100 p-3 rounded-lg text-yellow-600 mr-4">
+                <i class="fas fa-calendar-alt text-2xl"></i>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-dark">FIT - Otimização além das fronteiras: Sertão e Inovação</h4>
+                <p class="text-sm text-gray-600">DANTAS, R. F., VICENTE DUARTE, PAULINO, M. F. F. — 2023</p>
+            </div>
+        </div>
+        <p class="text-gray-700">Evento voltado à inovação tecnológica aplicada ao contexto do sertão e otimizações de processos.</p>
+    </div>
+</div>
+
         </div>
     </section>
 
